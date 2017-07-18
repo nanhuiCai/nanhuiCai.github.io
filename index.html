@@ -175,9 +175,9 @@
       
         <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreateJsPerson</span>(<span class="params">name,age&#123;</span></span></div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.writeJs = function()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"my name is"</span>+ <span class="keyword">this</span>.name +<span class="string">",i can write JS !"</span>);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"leo"</span>,<span class="number">18</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"rose"</span>,<span class="number">28</span>);</div><div class="line"><span class="built_in">console</span>.log(p1.writeJs === p2.writeJs);<span class="comment">//false</span></div></pre></td></tr></table></figure>
 <p>构造函数模式中拥有了类和实例的概念，并且实例和实例之间是互相独立公开的–&gt;<code>实例识别</code><br>基于构造函数模式的原型模式解决了 方法或者属性公有的问题–&gt;把实例之间相同的属性和方法提取成公有的属性和方法 –&gt; 想让谁公有就把他放在CreateJsPerson.prototype上即可</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreateJsPerson</span>(<span class="params">name,age&#123;</span></span></div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    CreateJsPerson.prototype.writeJs = function()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"my name is"</span>+ <span class="keyword">this</span>.name +<span class="string">",i can write JS !"</span>);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"leo"</span>,<span class="number">18</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"rose"</span>,<span class="number">28</span>);</div><div class="line"><span class="built_in">console</span>.log(p1.writeJs === p2.writeJs);<span class="comment">//false</span></div></pre></td></tr></table></figure>
-<hr>
-<h4 id="以下都是JS中规定的内容-记住"><a href="#以下都是JS中规定的内容-记住" class="headerlink" title="以下都是JS中规定的内容(记住)"></a>以下都是JS中规定的内容(记住)</h4>
+        
+          <a class="article-more-a" href="/2017/07/18/原型链模式基础/#more">more >></a>
+        
       
 
       
@@ -420,7 +420,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello Hexo"></a>Hello Hexo</h2>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello Hexo"></a>Hello Hexo</h2>
       
 
       
@@ -482,7 +482,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
