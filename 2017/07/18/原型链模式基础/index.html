@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>构造函数 | 墨峰</title>
+  <title>原型链模式基础 | 墨峰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1234567891011function Fn()&amp;#123;    this.x = 100;//this-&amp;gt;f1    this.getX = function()&amp;#123;        //this -&amp;gt; 需要看getX执行的时候才知道        console.log(this.x);    &amp;#125;&amp;#125;var f1 = new Fn;f1.getX();">
-<meta name="keywords" content="js,构造函数">
+  <meta name="description" content="12345678910function CreateJsPerson(name,age&amp;#123;    this.name = name;    this.age = age;    this.writeJs = function()&amp;#123;        console.log(&quot;my name is&quot;+ this.name +&quot;,i can write JS !&quot;);    &amp;#125;">
+<meta name="keywords" content="js,原型链">
 <meta property="og:type" content="article">
-<meta property="og:title" content="构造函数">
-<meta property="og:url" content="http://yoursite.com/2017/07/17/构造函数/index.html">
+<meta property="og:title" content="原型链模式基础">
+<meta property="og:url" content="http://yoursite.com/2017/07/18/原型链模式基础/index.html">
 <meta property="og:site_name" content="墨峰">
-<meta property="og:description" content="1234567891011function Fn()&amp;#123;    this.x = 100;//this-&amp;gt;f1    this.getX = function()&amp;#123;        //this -&amp;gt; 需要看getX执行的时候才知道        console.log(this.x);    &amp;#125;&amp;#125;var f1 = new Fn;f1.getX();">
-<meta property="og:updated_time" content="2017-07-17T09:21:51.817Z">
+<meta property="og:description" content="12345678910function CreateJsPerson(name,age&amp;#123;    this.name = name;    this.age = age;    this.writeJs = function()&amp;#123;        console.log(&quot;my name is&quot;+ this.name +&quot;,i can write JS !&quot;);    &amp;#125;">
+<meta property="og:updated_time" content="2017-07-18T02:06:23.826Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="构造函数">
-<meta name="twitter:description" content="1234567891011function Fn()&amp;#123;    this.x = 100;//this-&amp;gt;f1    this.getX = function()&amp;#123;        //this -&amp;gt; 需要看getX执行的时候才知道        console.log(this.x);    &amp;#125;&amp;#125;var f1 = new Fn;f1.getX();">
+<meta name="twitter:title" content="原型链模式基础">
+<meta name="twitter:description" content="12345678910function CreateJsPerson(name,age&amp;#123;    this.name = name;    this.age = age;    this.writeJs = function()&amp;#123;        console.log(&quot;my name is&quot;+ this.name +&quot;,i can write JS !&quot;);    &amp;#125;">
   
     <link rel="alternative" href="/atom.xml" title="墨峰" type="application/atom+xml">
   
@@ -156,44 +156,31 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-构造函数" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-原型链模式基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      构造函数
+      原型链模式基础
     </h1>
   
 
         
-        <a href="/2017/07/17/构造函数/" class="archive-article-date">
-  	<time datetime="2017-07-17T07:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-17</time>
+        <a href="/2017/07/18/原型链模式基础/" class="archive-article-date">
+  	<time datetime="2017-07-18T01:56:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;<span class="comment">//this-&gt;f1</span></div><div class="line">    <span class="keyword">this</span>.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//this -&gt; 需要看getX执行的时候才知道</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div><div class="line">f1.getX();<span class="comment">//100,this-&gt;f1</span></div><div class="line"><span class="keyword">var</span> s = f1.getX;</div><div class="line">s();<span class="comment">//undefind  , this指向window</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>1、在<code>构造函数模式</code>中，new Fn()执行，如果Fn不需要传递参数的话，后面的小括号可以省略<br>2、<code>this</code>的问题：在类中出现的this.xxx = xxx中的<code>this</code>都是当前类的实例，而某一个属性值（方法），方法中的<code>this</code>需要看方法执行的时候，前面是否有“.” ， 才能知道<code>this</code>是谁</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;<span class="comment">//this.x = 100</span></div><div class="line">    <span class="keyword">this</span>.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//f1.getX = function...</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div><div class="line"><span class="built_in">console</span>.log(f1.num);</div></pre></td></tr></table></figure>
-<p>3、类有普通函数的一名，当函数执行的时候，var num其实只是当前形成的私有作用域中的私有变量而已，它和我们的f1这个实例没有任何的关系；只有this.xxx = xxx才相当于给f1这个实例增加私有的属性和方法，才和f1有关系~</p>
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreateJsPerson</span>(<span class="params">name,age&#123;</span></span></div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.writeJs = function()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"my name is"</span>+ <span class="keyword">this</span>.name +<span class="string">",i can write JS !"</span>);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"leo"</span>,<span class="number">18</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"rose"</span>,<span class="number">28</span>);</div><div class="line"><span class="built_in">console</span>.log(p1.writeJs === p2.writeJs);<span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>构造函数模式中拥有了类和实例的概念，并且实例和实例之间是互相独立公开的–&gt;<code>实例识别</code><br>基于构造函数模式的原型模式解决了 方法或者属性公有的问题–&gt;把实例之间相同的属性和方法提取成公有的属性和方法 –&gt; 想让谁公有就把他放在CreateJsPerson.prototype上即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreateJsPerson</span>(<span class="params">name,age&#123;</span></span></div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    CreateJsPerson.prototype.writeJs = function()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"my name is"</span>+ <span class="keyword">this</span>.name +<span class="string">",i can write JS !"</span>);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"leo"</span>,<span class="number">18</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"rose"</span>,<span class="number">28</span>);</div><div class="line"><span class="built_in">console</span>.log(p1.writeJs === p2.writeJs);<span class="comment">//false</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">    <span class="keyword">this</span>.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">name</span>:<span class="string">'leo'</span>&#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div><div class="line"><span class="built_in">console</span>.log(f1)</div></pre></td></tr></table></figure>
-<p>4、在构造函数模式中，浏览器会默认的把实例返回（返回的是一个对象数据类型的值）；如果自己手动写了return返回：<br>   返回的是一个基本数据类型的值，当前实例是不变的，例如：return 100；f1还是当前Fn类的实例<br>   返回的是一个引用类型的值，当前的实例会被自己返回的值给替换掉，例如：return {name:’leo’}, f1就不再试Fn的实例了，而是对象{name:’leo’}.</p>
-<hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">    <span class="keyword">this</span>.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">name</span>:<span class="string">'leo'</span>&#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div></pre></td></tr></table></figure>
-<p>5、检测某一个实例是否属于这个类——&gt;instanceof<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">    <span class="built_in">console</span>.log(f1 <span class="keyword">instanceof</span> Fn);<span class="comment">//--&gt;true</span></div><div class="line">    <span class="built_in">console</span>.log(f1 <span class="keyword">instanceof</span> <span class="built_in">Array</span>);<span class="comment">//--&gt;false</span></div><div class="line">    <span class="built_in">console</span>.log(f1 <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//--&gt;true,因为所有的实例都是对象数据类型的，而每一个对象数据类型都是Object这个内置类的一个实例，所以f1也是它的一个实例</span></div><div class="line"> <span class="string">``</span><span class="string">`   </span></div><div class="line">对于检测数据类型来说，typeof有自己的局限性，不能细分哦object下的对象、数组、正则...</div><div class="line">`<span class="string">``</span> javascript</div><div class="line"><span class="comment">//var a = [];</span></div><div class="line"><span class="comment">//console.log(a instanceof Array);//true,说明a是一个数组</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">    <span class="keyword">this</span>.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> &#123;<span class="attr">name</span>:<span class="string">'leo'</span>&#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div><div class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> Fn;</div></pre></td></tr></table></figure></p>
-<p>6、f1和f2都是Fn这个类的一个实例，都拥有x和getX两个属性，但是这两个属性是各自的私有属性，所以：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( f1.getX === f2.getX );<span class="comment">//false</span></div><div class="line"></div><div class="line"><span class="keyword">in</span>:检测某一个属性是否属于这个对象( attr <span class="keyword">in</span> object ),不管是私有属性还是公有属性，只要存在，用<span class="keyword">in</span>来检测都是<span class="literal">true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"getX"</span> <span class="keyword">in</span> f1);<span class="comment">//true，是它的一个属性</span></div></pre></td></tr></table></figure></p>
-<p>hasOwnProperty:用来检测一个属性是否为这个对象的”私有属性”，这个方法只能检测私有的属性<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(f1.hasOwnProperty(<span class="string">"getX"</span>));<span class="comment">//true, "getX" 是f1的私有属性</span></div></pre></td></tr></table></figure></p>
-<p>思考：检测某一个属性是否为该对象的”公有属性”hasOwnProperty</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPubProperty</span>(<span class="params">obj,attr</span>)</span>&#123;</div><div class="line">    <span class="comment">//首先保证是它的一个属性并且还不是私有的属性，那么只能是公有的属性了</span></div><div class="line">    <span class="keyword">return</span> (attr <span class="keyword">in</span> obj) &amp;&amp; !obj.hasOwnProperty(attr);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(hasPubProperty(f1,<span class="string">"getX"</span>));<span class="comment">//false</span></div></pre></td></tr></table></figure>
-<p>7、isPrototypeOf  查看高程3或犀牛书</p>
-<!-- more -->
-
+<h4 id="以下都是JS中规定的内容-记住"><a href="#以下都是JS中规定的内容-记住" class="headerlink" title="以下都是JS中规定的内容(记住)"></a>以下都是JS中规定的内容(记住)</h4>
       
 
       
@@ -236,7 +223,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">构造函数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">原型链</a>
         		</li>
       		
 		</ul>
@@ -292,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/17/构造函数/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/18/原型链模式基础/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,18 +293,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/07/18/原型链模式基础/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          原型链模式基础
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/17/实例-构造函数模式/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">实例-构造函数模式</div>
+    <a href="/2017/07/17/构造函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">构造函数</div>
       <i class="icon-circle-right"></i>
     </a>
   
