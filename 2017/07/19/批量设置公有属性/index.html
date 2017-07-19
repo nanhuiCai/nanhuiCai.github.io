@@ -8,13 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>批量设置公有属性 | 墨峰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="思考：如何批量设置公有属性？">
+<meta name="keywords" content="js,原型链">
+<meta property="og:type" content="article">
 <meta property="og:title" content="批量设置公有属性">
 <meta property="og:url" content="http://yoursite.com/2017/07/19/批量设置公有属性/index.html">
 <meta property="og:site_name" content="墨峰">
-<meta property="og:updated_time" content="2017-07-19T06:25:30.115Z">
+<meta property="og:description" content="思考：如何批量设置公有属性？">
+<meta property="og:updated_time" content="2017-07-19T07:43:55.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="批量设置公有属性">
+<meta name="twitter:description" content="思考：如何批量设置公有属性？">
   
     <link rel="alternative" href="/atom.xml" title="墨峰" type="application/atom+xml">
   
@@ -172,7 +176,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script>
+        <script src="/assets/js/APlayer.min.js"> </script><p>思考：如何批量设置公有属性？</p>
+<a id="more"></a>
+<p>1、起一个别名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> pro = Fn.prototype;<span class="comment">//把原来原型指向的地址复制给pro，现在它们操作的是同一个内存空间。</span></div><div class="line">pro.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">&#125;;</div><div class="line">pro.getY = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.y);</div><div class="line">&#125;;</div><div class="line">pro.getZ = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.z);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div></pre></td></tr></table></figure>
+<hr>
+<p>2、重构原型对象的方式–&gt;自己开辟一个堆内存，存储公有的属性和方法，把浏览器原来给Fn.prototype开辟的那个替换掉<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line">Fn.prototype = &#123;</div><div class="line">    <span class="comment">//为了和原来的保持一致，我们需要手动的增加constructor的指向</span></div><div class="line">    <span class="keyword">constructor</span>:Fn,</div><div class="line">    a:function()&#123;</div><div class="line"></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">b</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;    </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Fn;</div><div class="line"></div><div class="line"><span class="comment">//1、只有浏览器天生给Fn.prototype开辟的堆内存里面才有constructor，而我们自己开辟的这个堆内存没有这个属性，这样constructor指向就不再是Fn而是Object了</span></div><div class="line"><span class="built_in">console</span>.log(f.constructor);<span class="comment">//没做任何处理之前       Object</span></div><div class="line"><span class="comment">//为了和原来的保持一致，我们需要手动的增加constructor的指向</span></div><div class="line"></div><div class="line"><span class="comment">//2、用这种方式给内置类增加公有的属性</span></div><div class="line"><span class="comment">//给内置类Array增加数组去重的方法</span></div><div class="line"><span class="built_in">Array</span>.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: <span class="built_in">Array</span>,</div><div class="line">    <span class="attr">unique</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//code</span></div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.dir(<span class="built_in">Array</span>.prototype);</div><div class="line"><span class="comment">//这种方式会把之前已经存在于原型上的属性和方法给替换掉，所以用这种方式修改内置类的话，浏览器是给屏蔽掉的</span></div><div class="line"><span class="comment">//例如：</span></div><div class="line"><span class="built_in">Array</span>.prototype.sort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"ok"</span>);<span class="comment">//this--&gt;ary  当前要操作的这个数组</span></div><div class="line">&#125;；</div><div class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">ary.sort();</div><div class="line"><span class="built_in">console</span>.log(ary);</div><div class="line"></div><div class="line"><span class="comment">//但是，我们可以一个个的修改内置的方法，当通过上述方式在数组的原型上增加方法，如果方法名和原来内置的重复了，会把人家内置的修改掉，--&gt;以后再内置类的原型上增加方法，命名都需要加特殊的前缀</span></div></pre></td></tr></table></figure></p>
+<!-- more -->
+
       
 
       
@@ -206,6 +217,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">原型链</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -269,6 +295,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/07/19/常用的6种继承方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常用的6种继承方式
+        
+      </div>
+    </a>
   
   
     <a href="/2017/07/19/this和原型扩展/" id="article-nav-older" class="article-nav-link-wrap">
@@ -400,19 +435,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">this</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">原型链</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">实例</a>
+                <a href="javascript:void(0)" class="js-tag color5">this</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">构造函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">实例</a>
               </li>
             
             <div class="clearfix"></div>
