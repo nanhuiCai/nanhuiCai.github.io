@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>实例-构造函数模式 | 墨峰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对象：万物皆对象类：对象的具体细分实例：类当中的具体事物  JS中的内置类有很多：Array是数组的内置类，每一个数组都是它的一个实例Object是对象的内置类，每一个对象类型都是它的实例Function是函数的内置类，每一个函数都是它的一个实例">
+  <meta name="description" content="对象：万物皆对象类：对象的具体细分实例：类当中的具体事物">
 <meta name="keywords" content="js,实例,构造函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实例-构造函数模式">
 <meta property="og:url" content="http://yoursite.com/2017/07/17/实例-构造函数模式/index.html">
 <meta property="og:site_name" content="墨峰">
-<meta property="og:description" content="对象：万物皆对象类：对象的具体细分实例：类当中的具体事物  JS中的内置类有很多：Array是数组的内置类，每一个数组都是它的一个实例Object是对象的内置类，每一个对象类型都是它的实例Function是函数的内置类，每一个函数都是它的一个实例">
-<meta property="og:updated_time" content="2017-07-17T07:27:35.069Z">
+<meta property="og:description" content="对象：万物皆对象类：对象的具体细分实例：类当中的具体事物">
+<meta property="og:updated_time" content="2017-07-19T06:20:38.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实例-构造函数模式">
-<meta name="twitter:description" content="对象：万物皆对象类：对象的具体细分实例：类当中的具体事物  JS中的内置类有很多：Array是数组的内置类，每一个数组都是它的一个实例Object是对象的内置类，每一个对象类型都是它的实例Function是函数的内置类，每一个函数都是它的一个实例">
+<meta name="twitter:description" content="对象：万物皆对象类：对象的具体细分实例：类当中的具体事物">
   
     <link rel="alternative" href="/atom.xml" title="墨峰" type="application/atom+xml">
   
@@ -178,7 +178,8 @@
       
         <script src="/assets/js/APlayer.min.js"> </script><p>对象：万物皆对象<br>类：对象的具体细分<br>实例：类当中的具体事物</p>
 <hr>
-<p>JS中的内置类有很多：<br>Array是数组的内置类，每一个数组都是它的一个实例<br>Object是对象的内置类，每一个对象类型都是它的实例<br>Function是函数的内置类，每一个函数都是它的一个实例<br><a id="more"></a>                    </p>
+<a id="more"></a>    
+<p>JS中的内置类有很多：<br>Array是数组的内置类，每一个数组都是它的一个实例<br>Object是对象的内置类，每一个对象类型都是它的实例<br>Function是函数的内置类，每一个函数都是它的一个实例</p>
 <p>除了内置类，还有自己创造的自定义类<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createJsPerson</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">	obj.name = name;</div><div class="line">	obj.age = age;</div><div class="line">	obj.writeJs = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"my name is "</span>+ <span class="keyword">this</span>.name + <span class="string">",i can write Js 啦!"</span>);</div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = createJsPerson(<span class="string">"leo"</span>,<span class="number">19</span>);</div><div class="line">p1.writeJs();</div></pre></td></tr></table></figure></p>
 <p>构造函数模式的目的就是为了创建一个自定义类，并且创建这个类的实例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreateJsPerson</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">	<span class="comment">//浏览器默认创建的对象就是我们的实例p1 -&gt; this</span></div><div class="line">	<span class="keyword">this</span>.name = name;<span class="comment">//p1.name = name</span></div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.writeJs = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"my name is "</span>+ <span class="keyword">this</span>.name + <span class="string">",i can write Js 啦!"</span>);</div><div class="line">	&#125;;</div><div class="line">	<span class="comment">//最后浏览器会默认的把创建的实例返回</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"leo"</span>,<span class="number">19</span>);</div><div class="line">p1.writeJs();</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> CreateJsPerson(<span class="string">"rose"</span>,<span class="number">19</span>);</div><div class="line">p2.writeJs();</div><div class="line"><span class="keyword">var</span> res = CreateJsPerson(<span class="string">"kai"</span>,<span class="number">7</span>);<span class="comment">//这样写不是构造函数模式执行而是普通的函数执行，由于没有写return，所以res=undefined ， 并且CreateJsPerson这个方法中的this是window</span></div><div class="line"><span class="built_in">console</span>.log(res);<span class="comment">//undefined;</span></div></pre></td></tr></table></figure></p>
 <p>构造函数模式和工厂模式的区别</p>
