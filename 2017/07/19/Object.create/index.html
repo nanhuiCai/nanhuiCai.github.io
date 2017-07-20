@@ -6,19 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>批量设置公有属性 | 墨峰</title>
+  <title>Object.create | 墨峰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="思考：如何批量设置公有属性？">
-<meta name="keywords" content="js,原型链">
+  <meta name="description" content="创建对象的方式：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="批量设置公有属性">
-<meta property="og:url" content="http://yoursite.com/2017/07/19/批量设置公有属性/index.html">
+<meta property="og:title" content="Object.create">
+<meta property="og:url" content="http://yoursite.com/2017/07/19/Object.create/index.html">
 <meta property="og:site_name" content="墨峰">
-<meta property="og:description" content="思考：如何批量设置公有属性？">
-<meta property="og:updated_time" content="2017-07-20T09:24:15.216Z">
+<meta property="og:description" content="创建对象的方式：">
+<meta property="og:updated_time" content="2017-07-20T09:27:07.927Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="批量设置公有属性">
-<meta name="twitter:description" content="思考：如何批量设置公有属性？">
+<meta name="twitter:title" content="Object.create">
+<meta name="twitter:description" content="创建对象的方式：">
   
     <link rel="alternative" href="/atom.xml" title="墨峰" type="application/atom+xml">
   
@@ -156,32 +155,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-批量设置公有属性" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Object.create" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      批量设置公有属性
+      Object.create
     </h1>
   
 
         
-        <a href="/2017/07/19/批量设置公有属性/" class="archive-article-date">
-  	<time datetime="2017-07-19T06:25:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-19</time>
+        <a href="/2017/07/19/Object.create/" class="archive-article-date">
+  	<time datetime="2017-07-19T07:42:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>思考：如何批量设置公有属性？</p>
-<a id="more"></a>
-<p>1、起一个别名</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> pro = Fn.prototype;<span class="comment">//把原来原型指向的地址复制给pro，现在它们操作的是同一个内存空间。</span></div><div class="line">pro.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">&#125;;</div><div class="line">pro.getY = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.y);</div><div class="line">&#125;;</div><div class="line">pro.getZ = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.z);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div></pre></td></tr></table></figure>
+        <script src="/assets/js/APlayer.min.js"> </script><p>创建对象的方式：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="keyword">var</span> obj =&#123;&#125;;<span class="comment">//字面量方式</span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();<span class="comment">//构造函数方式或实例方式</span></div></pre></td></tr></table></figure></p>
 <hr>
-<p>2、重构原型对象的方式–&gt;自己开辟一个堆内存，存储公有的属性和方法，把浏览器原来给Fn.prototype开辟的那个替换掉<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line">Fn.prototype = &#123;</div><div class="line">    <span class="comment">//为了和原来的保持一致，我们需要手动的增加constructor的指向</span></div><div class="line">    <span class="keyword">constructor</span>:Fn,</div><div class="line">    a:function()&#123;</div><div class="line"></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">b</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;    </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Fn;</div><div class="line"></div><div class="line"><span class="comment">//1、只有浏览器天生给Fn.prototype开辟的堆内存里面才有constructor，而我们自己开辟的这个堆内存没有这个属性，这样constructor指向就不再是Fn而是Object了</span></div><div class="line"><span class="built_in">console</span>.log(f.constructor);<span class="comment">//没做任何处理之前       Object</span></div><div class="line"><span class="comment">//为了和原来的保持一致，我们需要手动的增加constructor的指向</span></div><div class="line"></div><div class="line"><span class="comment">//2、用这种方式给内置类增加公有的属性</span></div><div class="line"><span class="comment">//给内置类Array增加数组去重的方法</span></div><div class="line"><span class="built_in">Array</span>.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: <span class="built_in">Array</span>,</div><div class="line">    <span class="attr">unique</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">//code</span></div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.dir(<span class="built_in">Array</span>.prototype);</div><div class="line"><span class="comment">//这种方式会把之前已经存在于原型上的属性和方法给替换掉，所以用这种方式修改内置类的话，浏览器是给屏蔽掉的</span></div><div class="line"><span class="comment">//例如：</span></div><div class="line"><span class="built_in">Array</span>.prototype.sort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"ok"</span>);<span class="comment">//this--&gt;ary  当前要操作的这个数组</span></div><div class="line">&#125;；</div><div class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">ary.sort();</div><div class="line"><span class="built_in">console</span>.log(ary);</div><div class="line"></div><div class="line"><span class="comment">//但是，我们可以一个个的修改内置的方法，当通过上述方式在数组的原型上增加方法，如果方法名和原来内置的重复了，会把人家内置的修改掉，--&gt;以后再内置类的原型上增加方法，命名都需要加特殊的前缀</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">"leo"</span>,<span class="attr">age</span>:<span class="number">10</span>&#125;;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> obj)&#123;</div><div class="line">    <span class="comment">//--&gt;for in 循环在遍历的时候，默认的话可以把自己私有的和在它所属类原型上扩展的属性和方法都可以遍历到，但是一般情况下，我们遍历一个对象只需要遍历私有的即可，我们可以使用一下的判断进行处理：</span></div><div class="line"><span class="comment">//    if(obj.prototypeIsEnumerable(key))&#123;</span></div><div class="line"><span class="comment">//        console.log(key);</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//或</span></div><div class="line">    <span class="keyword">if</span>(obj.hasOwnProperty(key))&#123;<span class="comment">//判断是不是自己私有的</span></div><div class="line">       <span class="built_in">console</span>.log(key);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="Object-create-方法创建一个拥有指定原型和若干个指定属性的对象。"><a href="#Object-create-方法创建一个拥有指定原型和若干个指定属性的对象。" class="headerlink" title="Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。"></a>Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。</h3><p>创建一个新的对象，但是还要把proObj作为这个对象的原型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    <span class="attr">constructor</span>:Fn,</div><div class="line">    <span class="attr">getX</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">Fn.prototype = obj;<span class="comment">//--&gt;Fn.prototype=xxff00，原型与obj指向同一堆内存地址</span></div><div class="line">Fn.prototype.sum = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Fn;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//克隆对象</span></div><div class="line"><span class="comment">//方法1</span></div><div class="line"><span class="comment">//var obj2 = &#123;&#125;;</span></div><div class="line"><span class="comment">//for(var key in obj)&#123;</span></div><div class="line"><span class="comment">//    if(obj.hasOwnProperty(key))&#123;</span></div><div class="line"><span class="comment">//        obj2[key] = obj[key]; </span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//&#125;</span></div><div class="line"></div><div class="line"><span class="comment">//方法2</span></div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj);<span class="comment">//obj2的原型指向obj</span></div><div class="line"><span class="comment">//--&gt;obj2--&gt;没有私有</span></div><div class="line"><span class="comment">//__proto__:</span></div><div class="line"><span class="comment">//  getX:function...</span></div><div class="line"><span class="comment">//  __proto__:Object.prototype</span></div><div class="line">obj2.getX();</div><div class="line">obj.getY = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">&#125;</div><div class="line">obj2.getY();<span class="comment">//2，obj2的原型指向obj，obj改变，obj2原型也改变</span></div></pre></td></tr></table></figure>
 <!-- more -->
 
       
@@ -217,21 +216,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">原型链</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -282,7 +266,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/19/批量设置公有属性/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/19/Object.create/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +280,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/07/19/Object.create/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/20/常用的6种继承方式/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Object.create
+          原型链常用的6种继承方式
         
       </div>
     </a>
   
   
-    <a href="/2017/07/19/this和原型扩展/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">this和原型扩展</div>
+    <a href="/2017/07/19/批量设置公有属性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">批量设置公有属性</div>
       <i class="icon-circle-right"></i>
     </a>
   
