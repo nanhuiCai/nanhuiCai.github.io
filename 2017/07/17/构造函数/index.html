@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/17/构造函数/index.html">
 <meta property="og:site_name" content="墨峰">
 <meta property="og:description" content="1234567891011function Fn()&amp;#123;    this.x = 100;//this-&amp;gt;f1    this.getX = function()&amp;#123;        //this -&amp;gt; 需要看getX执行的时候才知道        console.log(this.x);    &amp;#125;&amp;#125;var f1 = new Fn;f1.getX();">
-<meta property="og:updated_time" content="2017-07-21T02:32:08.945Z">
+<meta property="og:updated_time" content="2017-07-21T02:44:57.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构造函数">
 <meta name="twitter:description" content="1234567891011function Fn()&amp;#123;    this.x = 100;//this-&amp;gt;f1    this.getX = function()&amp;#123;        //this -&amp;gt; 需要看getX执行的时候才知道        console.log(this.x);    &amp;#125;&amp;#125;var f1 = new Fn;f1.getX();">
@@ -195,7 +195,7 @@
 <hr>
 <h4 id="红皮书扩展"><a href="#红皮书扩展" class="headerlink" title="红皮书扩展"></a>红皮书扩展</h4><p>1、按照惯例，构造函数始终都应该以一个大写字母开头，而非构造函数则应该以一个小写字母开头。是为了区别去ECMAScript中的其他函数；因为构造函数本身也是函数，只不过用来创建对象而已。<br>2、要创建Person的新实例，必须使用new操作符。以这种方式调用构造函数实际上回经历一下4个步骤：</p>
 <pre><code>- 创建新对象；
-- 讲构造函数的作用域付给新对象（因此this就指向了这个新对象）；
+- 将构造函数的作用域赋给新对象（因此this就指向了这个新对象）；
 - 执行构造函数中的代码（为这个新对象添加属性）；
 - 返回新对象。
 </code></pre><p>3、构造函数与其他函数唯一区别，在于调用他们的方式不同。任何函数，只要通过new操作符来调用，那他就可以作为构造函数；而任何函数，如果不通过new操作符来调用，那他跟普通函数没两样。</p>
