@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="墨峰">
 <meta property="og:description" content="构造函数模式中拥有了类和实例的概念，并且实例和实例之间是互相独立公开的–&amp;gt;实例识别">
 <meta property="og:image" content="http://yoursite.com/img/原型.jpg">
-<meta property="og:updated_time" content="2017-07-21T03:27:05.074Z">
+<meta property="og:updated_time" content="2017-07-21T06:00:44.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型链模式基础">
 <meta name="twitter:description" content="构造函数模式中拥有了类和实例的概念，并且实例和实例之间是互相独立公开的–&amp;gt;实例识别">
@@ -188,10 +188,12 @@
 <p><img src="/img/原型.jpg" alt="原型.jpg"></p>
 <p>2、Obeject是JS中所有对象数据类型的基类（最顶层的类）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1)、f1 instanceof Object -&gt; true，因为f1通过 _ _ proto _ _向上级查找，不管多少级，最后总能找到Object</div><div class="line">2)、在Object.prototype上没有_ _ proto _ _这个属性</div></pre></td></tr></table></figure></p>
 <p>3、原型模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f1.hasOwnProperty(&quot;x&quot;);//hasOwnProperty是f1的一个属性</div></pre></td></tr></table></figure></p>
-<p>但是f1的私有属性上并没有这个方法，那如何处理的呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1)、通过 对象名.属性名 的方式获取属性值的时候，首先在对象的私有的属性上进行查找，如果私有中存在这个属性，则获取的是私有的属性值；</div><div class="line">如果私有的没有，则通过 _ _ proto _ _找到所属类的原型（类的原型上定义的属性和方法都是当前实例公有的属性和方法），原型上存在原型上的 _ _ proto _ _继续向上查找，一直找到Object.prototype为止</div></pre></td></tr></table></figure></p>
+<p>但是f1的私有属性上并没有这个方法，那如何处理的呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1)、通过 对象名.属性名 的方式获取属性值的时候，首先在对象的私有的属性上进行查找，如果私有中存在这个属性，则获取的是私有的属性值；</div><div class="line">如果私有的没有，则通过 _ _ proto _ _找到所属类的原型（类的原型上定义的属性和方法都是当前实例公有的属性和方法），原型上不存在,再通过原型上的 _ _ proto _ _继续向上查找，一直找到Object.prototype为止</div></pre></td></tr></table></figure></p>
 <p>这种查找的机制叫原型链模式</p>
 <hr>
-<h2 id="当你执行一个对象名-属性名的时候，首先找私有的，看有没有，私有的没有，通过-proto-查找公有的看有没有，如果公有的没有，则继续通过-proto-查找基类原型上看有没有，这种模式叫做原型链模式"><a href="#当你执行一个对象名-属性名的时候，首先找私有的，看有没有，私有的没有，通过-proto-查找公有的看有没有，如果公有的没有，则继续通过-proto-查找基类原型上看有没有，这种模式叫做原型链模式" class="headerlink" title="当你执行一个对象名.属性名的时候，首先找私有的，看有没有，私有的没有，通过   proto   查找公有的看有没有，如果公有的没有，则继续通过   proto  查找基类原型上看有没有，这种模式叫做原型链模式"></a>当你执行一个对象名.属性名的时候，首先找私有的，看有没有，私有的没有，通过 <em> </em> proto <em> </em> 查找公有的看有没有，如果公有的没有，则继续通过 <em> </em> proto <em> </em>查找基类原型上看有没有，这种模式叫做原型链模式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">f1.getX === f2.getX;<span class="comment">//true</span></div><div class="line">f1.__proto__.getX === f2.getX;<span class="comment">//true</span></div><div class="line">f1.getX === Fn.prototype.getX;<span class="comment">//true</span></div><div class="line"></div><div class="line">f1.sum === f2.__proto__.sum;<span class="comment">//false</span></div><div class="line">f1.sum === Fn.prototype.sum;<span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>当你执行一个对象名.属性名的时候，首先找私有的，看有没有，私有的没有，通过 <em> </em> proto <em> </em> 查找公有的看有没有，如果公有的没有，则继续通过 <em> </em> proto <em> </em>查找基类原型上看有没有，这种模式叫做原型链模式</p>
+<hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">f1.getX === f2.getX;<span class="comment">//true</span></div><div class="line">f1.__proto__.getX === f2.getX;<span class="comment">//true</span></div><div class="line">f1.getX === Fn.prototype.getX;<span class="comment">//true</span></div><div class="line"></div><div class="line">f1.sum === f2.__proto__.sum;<span class="comment">//false</span></div><div class="line">f1.sum === Fn.prototype.sum;<span class="comment">//false</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">f1.hasOwmProperty - &gt; f1.__proto__.__proto__.hasOwnProperty;</div><div class="line"><span class="comment">//在IE浏览器中，原型模式也是同样的道理，但是IE浏览器怕你通过__proto__把公有的修改，禁止使用__proto__。</span></div><div class="line"></div><div class="line">f1.sum = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//修改自己私有的sum，f2不受影响</span></div><div class="line">&#125;;</div><div class="line">f1.__proto__.sum =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//修改所属类原型上的sum，f2受影响，且IE不支持</span></div><div class="line">&#125;</div><div class="line">Fn.prototype.sum = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//修改公有的sum，与上面的原理一样，IE支持</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="86" src="//music.163.com/outchain/player?type=2&id=24953439&auto=1&height=66"></iframe><br><!-- more --></p>
 
@@ -446,11 +448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+                <a href="javascript:void(0)" class="js-tag color5">this</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">this</a>
+                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
               </li>
              
               <li class="article-tag-list-item">
