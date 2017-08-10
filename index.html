@@ -253,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/03/小程序-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/10/数据绑定及Dom回流/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="墨峰">
@@ -272,7 +272,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/03/小程序-1/" itemprop="url">小程序-1</a></h1>
+                <a class="post-title-link" href="/2017/08/10/数据绑定及Dom回流/" itemprop="url">数据绑定及Dom回流</a></h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T14:31:45+08:00">
-                2017-08-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T16:47:32+08:00">
+                2017-08-10
               </time>
             
 
@@ -323,6 +323,474 @@
           
             <script src="/assets/js/APlayer.min.js"> </script>
           
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/09/json及操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="墨峰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="墨峰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/09/json及操作/" itemprop="url">json及操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-09T09:40:18+08:00">
+                2017-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>JSON不是一个单独的数据类型，它只是一种特殊的数据格式—&gt;它是对象数据类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">name</span>:<span class="string">'leo'</span>,<span class="attr">age</span>:<span class="number">7</span> &#125;;<span class="comment">//普通格式的对象</span></div><div class="line"><span class="keyword">var</span> jsonObj = &#123; <span class="string">"name"</span>:<span class="string">"leo"</span>,<span class="string">"age"</span>:<span class="number">7</span> &#125;;<span class="comment">//JSON格式的对象（相对于普通的格式来说，只是把属性名用双引号包起来了）</span></div></pre></td></tr></table></figure>
+<hr>
+<p>在window浏览器对象中，提供了一个叫做JSON的属性，它里面提供了两个方法：<br>—&gt;window.JSON<br>    1、JSON.parse —&gt;  把JSON格式的字符串转换为JSON格式的对象<br>    2、JSON.stringify —&gt; 把JSON格式的对象转换为JSON格式的字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> jsonObj = &#123; <span class="string">"name"</span>:<span class="string">"leo"</span>,<span class="string">"age"</span>:<span class="number">7</span> &#125;;</div><div class="line"><span class="keyword">var</span> jsonStr = <span class="built_in">JSON</span>.stringify(jsonObj);<span class="comment">// ---&gt; '&#123;"name":"leo","age":7&#125;'</span></div></pre></td></tr></table></figure>
+<h4 id="在IE6-7浏览器中，window下没有JSON对象，刚才的parse-和-stringify-都不存在了"><a href="#在IE6-7浏览器中，window下没有JSON对象，刚才的parse-和-stringify-都不存在了" class="headerlink" title="在IE6-7浏览器中，window下没有JSON对象，刚才的parse 和 stringify 都不存在了"></a>在IE6-7浏览器中，window下没有JSON对象，刚才的parse 和 stringify 都不存在了</h4><p>如何把JSON格式的字符串转换为JSON格式的对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'&#123; "name":"leo","age":7 &#125;'</span>;</div><div class="line"><span class="built_in">JSON</span>.parse(str);</div><div class="line"><span class="built_in">eval</span>(<span class="string">"("</span>+ str +<span class="string">")"</span>);<span class="comment">//不要问为什么，一定要记住使用eval的话，不要忘记手动的加一个小括号</span></div></pre></td></tr></table></figure></p>
+<hr>
+<p>兼容utils<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//-&gt;formatJSON:把JSON格式字符串转换为JSON格式对象</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatJSON</span>(<span class="params">jsonStr</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"JSON"</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="built_in">JSON</span>.parse(jsonStr) : <span class="built_in">eval</span>(<span class="string">"("</span> + jsonStr + <span class="string">")"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/08/sort深入研究/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="墨峰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="墨峰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/08/sort深入研究/" itemprop="url">sort深入研究</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T15:10:52+08:00">
+                2017-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>ary.sort();只能处理10以内的数字排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ary = [<span class="number">12</span>,<span class="number">23</span>,<span class="number">14</span>,<span class="number">34</span>,<span class="number">23</span>,<span class="number">1</span>,<span class="number">14</span>,<span class="number">16</span>,<span class="number">26</span>,<span class="number">2</span>];</div><div class="line"><span class="comment">//ary.sort();只能处理10以内的数字排序</span></div><div class="line"><span class="comment">//处理10以外的</span></div><div class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="comment">//a--&gt;每一次执行匿名函数的时候，找到数组中的当前项</span></div><div class="line">    <span class="comment">//b--&gt;当前项的后一项</span></div><div class="line">    <span class="keyword">return</span> a - b;<span class="comment">//升序，如果a&gt;b,返回的&gt;0，a和b交换位置</span></div><div class="line">    <span class="comment">//return b - a;//降序，如果b&gt;a,返回的&gt;0，a和b交换位置</span></div><div class="line">    <span class="comment">//---&gt;return的是一个&gt;0 或者 &lt;=0 的数，大于0让a和b交换一个位置，小于等于0  原来的位置不动</span></div><div class="line"></div><div class="line">&#125;);</div><div class="line"><span class="comment">//相当于</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">    callback();<span class="comment">// callback();相当于fn(function()&#123;&#125;)的function()&#123;&#125;执行</span></div><div class="line">&#125;</div><div class="line">fn(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</div><div class="line"><span class="comment">//这就是回调函数：把一个方法A当做参数值传递给另外一个函数B，然后在B执行的过程当中，我们随时根据需求让A方法执行</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">    fn();</div><div class="line">&#125;</div><div class="line">B(A);</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ary = [<span class="number">12</span>,<span class="number">23</span>,<span class="number">14</span>,<span class="number">34</span>,<span class="number">23</span>,<span class="number">1</span>,<span class="number">14</span>,<span class="number">16</span>,<span class="number">26</span>,<span class="number">2</span>];</div><div class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//不管a和b谁打，每一次都返回一个恒大于0的数，也就是每一次a和b都要交换位置，最后结果就是原有数组倒过来排列了</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(ary);</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ary = [</div><div class="line">    &#123;<span class="attr">name</span>:<span class="string">'leo'</span>,<span class="attr">age</span>:<span class="string">'30'</span>&#125;,</div><div class="line">    &#123;<span class="attr">name</span>:<span class="string">'er'</span>,<span class="attr">age</span>:<span class="string">'10'</span>&#125;,</div><div class="line">    &#123;<span class="attr">name</span>:<span class="string">'cai'</span>,<span class="attr">age</span>:<span class="string">'20'</span>&#125;,</div><div class="line">    &#123;<span class="attr">name</span>:<span class="string">'row'</span>,<span class="attr">age</span>:<span class="string">'110'</span>&#125;</div><div class="line">];</div><div class="line"><span class="comment">//给二维数组排序，按照年龄由小到大进行排序</span></div><div class="line"><span class="comment">//由大到小</span></div><div class="line"><span class="comment">//ary.sort(function(a,b)&#123;</span></div><div class="line"><span class="comment">//    return parseFloat(a.age) - parseFloat(b.age);//不管得到什么类型，都转换成数字进行相减</span></div><div class="line"><span class="comment">//&#125;)</span></div><div class="line"></div><div class="line"><span class="comment">//由大到小 </span></div><div class="line"><span class="comment">//ary.sort(function(a,b)&#123;</span></div><div class="line"><span class="comment">//    return (parseFloat(a.age) - parseFloat(b.age)) * -1;</span></div><div class="line"><span class="comment">//&#125;)</span></div><div class="line"></div><div class="line"><span class="comment">//按姓名排序</span></div><div class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a.name.localeCompare(b.name); </div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(ary)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/30/类数组转换为数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="墨峰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="墨峰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/30/类数组转换为数组/" itemprop="url">类数组转换为数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-30T16:57:22+08:00">
+                2017-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oLis = <span class="built_in">document</span>.getElementByTagName(<span class="string">"div"</span>);</div><div class="line"></div><div class="line"><span class="comment">//标准</span></div><div class="line"><span class="keyword">var</span> ary = <span class="built_in">Array</span>.prototype.slice.call(oLis);</div><div class="line"></div><div class="line"><span class="comment">//非标准</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;oLis.length;i++)&#123;</div><div class="line">    ary[ary.length] = oLis[i];</div><div class="line">&#125;</div><div class="line"><span class="comment">//在IE6~8浏览器中，不支持借用数组的slice实现将元素集合（节点集合）的类数组转换为数组--&gt;SCRIPT5014: Array.prototype.slice: 'this' 不是javaScript 对象（报错）</span></div><div class="line"><span class="comment">//但是对于arguments借用数组的方法是不存在兼容性问题的。</span></div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/30/类数组转换为数组/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/28/获取平均数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="墨峰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="墨峰">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/28/获取平均数/" itemprop="url">获取平均数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-28T15:27:35+08:00">
+                2017-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>求平均数的思路</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/28/获取平均数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -431,17 +899,14 @@
 
       
         
-          
-            <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ary = [<span class="number">23</span>，<span class="number">1</span>,<span class="number">34</span>,<span class="number">24</span>,<span class="number">35</span>,<span class="number">14</span>,<span class="number">36</span>，<span class="number">2</span>];</div><div class="line"><span class="built_in">Math</span>.max.call(ary)</div><div class="line"><span class="comment">//第一种方法，首先先给数组进行排序（小-大），第一个和最后一个就是我们想要的最小值和最大值</span></div><div class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a - b;</div><div class="line">&#125;);</div><div class="line"><span class="keyword">var</span> min = ary[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> max = ary[ary.length<span class="number">-1</span>];</div><div class="line"><span class="built_in">console</span>.log(min,max);</div></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第二种思路，假设法：假设昂前数组中的弟弟一个值是最大值，然后拿这个值和后面的项逐一进行比较，如果后面某一个只比假设的还要打，说明假设错了，我们把假设的值进行替换...</span></div><div class="line"><span class="comment">//和自定义属性一样，都是JS中最常用的编程思想</span></div><div class="line"><span class="keyword">var</span> ary = [<span class="number">23</span>，<span class="number">1</span>,<span class="number">34</span>,<span class="number">24</span>,<span class="number">35</span>,<span class="number">14</span>,<span class="number">36</span>，<span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> max = ary[<span class="number">0</span>],min = ary[<span class="number">0</span>];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;ary.length;i++)&#123;</div><div class="line">    <span class="keyword">var</span> cur = ary[i];</div><div class="line">    cur &gt; max ? max = cur : <span class="literal">null</span>;</div><div class="line">    cur &lt; min ? min = cur : <span class="literal">null</span>;     </div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(min,max);</div><div class="line"><span class="comment">//以后项目当中，经常用到的编程思想</span></div><div class="line"><span class="comment">//细心体会透</span></div><div class="line"><span class="comment">//先假设一个命题，再验证命题成立</span></div></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第三种思路，使用Math中的max/min方法实现</span></div><div class="line"><span class="keyword">var</span> ary = [<span class="number">23</span>，<span class="number">1</span>,<span class="number">34</span>,<span class="number">24</span>,<span class="number">35</span>,<span class="number">14</span>,<span class="number">36</span>，<span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,ary);</div><div class="line"><span class="keyword">var</span> min = <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>,ary);</div><div class="line"><span class="built_in">console</span>.log(min,max);</div></pre></td></tr></table></figure>
-<h3 id="eval：把一个字符串变为JS表达式执行-比较重要的知识点"><a href="#eval：把一个字符串变为JS表达式执行-比较重要的知识点" class="headerlink" title="eval：把一个字符串变为JS表达式执行(比较重要的知识点)"></a>eval：把一个字符串变为JS表达式执行(比较重要的知识点)</h3><p>例如：<br>eval(“12+23+34+45”)  –&gt; 114</p>
-<hr>
-<h3 id="括号表达式"><a href="#括号表达式" class="headerlink" title="括号表达式"></a>括号表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>);&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>);&#125;</div><div class="line"><span class="comment">//;(fn1,fn2)();//2,  --&gt;只有fn2执行了   ---&gt;(x1,x2,x3...) 括号表达式，一个括号中出现多项内容，中间用","隔开，但是我们最好获取到的结果只有最后一项</span></div><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'leo'</span>,<span class="attr">fn</span>:fn2&#125;;</div><div class="line"><span class="comment">//(fn2,obj.fn)();//执行的是obj.fn ，但是执行的时候里面的this变为了window而不是obj</span></div><div class="line">(obj.fn)();<span class="comment">//this 还是 obj</span></div></pre></td></tr></table></figure>
-
-          
+          <p>此处省略若干字~</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/28/获取数组最大值/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -550,16 +1015,14 @@
 
       
         
-          
-            <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;<span class="comment">//告诉当前浏览器接下来的JS代码将按照严格迷失进行编写</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">"leo"</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1,num2</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(num1+num2);</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line">fn(<span class="number">100</span>,<span class="number">200</span>);<span class="comment">//300,this---&gt;window  num1--100    num2---200</span></div><div class="line">fn.call(<span class="number">100</span>,<span class="number">200</span>);<span class="comment">//NaN,this-&gt;100   num1--200 num2=undefined</span></div><div class="line">fn.call(obj,<span class="number">100</span>,<span class="number">200</span>);<span class="comment">//300,this---&gt;obj  num1--100    num2---200</span></div><div class="line"></div><div class="line">fn.call();<span class="comment">//this-&gt;window     在严格模式下this--&gt;undefined</span></div><div class="line">fn.call(<span class="literal">null</span>);<span class="comment">//this-&gt;window   在严格模式下this--&gt;undefined</span></div><div class="line">fn.call(<span class="literal">undefined</span>);<span class="comment">//this-&gt;window   在严格模式下this--&gt;undefined</span></div></pre></td></tr></table></figure>
-<hr>
-<p>apply和call方法的作用是一模一样的，都是用来改变方法的this关键字并且把方法执行；而且在严格模式下和非严格迷失下对于第一个参数是unll/undefined这种情况的规律也是一样的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fn.call(obj,<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">fn.apply(obj,[<span class="number">100</span>,<span class="number">200</span>]);<span class="comment">//vall在给fn传递参数的时候，是一个个的传递值的，而apply不是一个个穿，而是把要给fn传递的参数值统一的放在一个数组中进行操作--&gt;但是也相当于一个个的给fn的形参赋值</span></div></pre></td></tr></table></figure></p>
-<p>bind：这个方法在IE6-8下不兼容—&gt;和call、apply类式，都是用来改变this关键字的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> tempFn = fn.bind(obj,<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//只是改变了fn中的this为obj，并且给fn传递了两个参数1、2，但是此时并没有把fn这个函数执行；执行bind会有一个返回值，这个返回值tempFn就是我们把fn的this改变后的那个结果</span></div><div class="line">tempFn();</div></pre></td></tr></table></figure>
-<p>预处理：事先把fn的this改变为我们想要的结果，并且把对应的参数值也准备好，以后要用到了，直接的执行即可</p>
-<p>严格模式下的this相对于非严格模式下的this主要区别在于：对于JS代码中没有写执行主体的情况下，非严格模式下默认都是window执行的，所以this指向的是window；但是在严格的模式下，没有写就是没有执行主体，this指向的是undefined</p>
-
-          
+          <p>call、apply、bind的区别</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/28/call、apply、bind的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -668,14 +1131,15 @@
 
       
         
-          
-            <script src="/assets/js/APlayer.min.js"> </script><h3 id="Function-prototype-call"><a href="#Function-prototype-call" class="headerlink" title="Function.prototype.call()"></a>Function.prototype.call()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fun.call(thisArg[, arg1[, arg2[, ...]]])</div></pre></td></tr></table></figure>
-<p>call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'leo'</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line">fn();<span class="comment">//window</span></div><div class="line">fn.call(obj);<span class="comment">//Object &#123;name: "leo"&#125;</span></div></pre></td></tr></table></figure>
-<p>call方法作用：<br>首先让原型上的方法执行，在执行call方法的时候，让fn方法中的this变为第一个参数值obj；然后再把fn这个函数执行；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//面试题</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">1</span>);&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">2</span>);&#125;</div><div class="line">fn1.call(fn2);<span class="comment">//首先fn1通过fn1通过原型链机制找到Function.prototype上的call方法，并且让call方法执行---&gt;此时call这个方法中的this就是要操作的fn1---&gt;在call方法代码执行的过程中首先让fn1中的"this关键字"变为fn2，然后在让fn1这个方法执行--&gt;1</span></div><div class="line">fn1.call.call(fn2);<span class="comment">//fn1.call  首先fn1通过原型链机制找到Function.prototype上的call方法，然后再让call方法通过原型再找到Function.prototype上的call方法（因为call本身的值也是一个函数，所以同样可以找到Function.prototype），在第二次再找到call的时候，让方法执行，方法中的this是fn1.call，首先让这个方法中的this变为fn2，然后再让fn1.call执行---&gt;2</span></div><div class="line"><span class="comment">//fn1.call</span></div><div class="line"><span class="comment">//fn1.call.call(fn2)--&gt;先让call方法执行，call中的this 是fn1.call，并让fn1.call中的this变为fn2，再让fn1.call执行--&gt;2</span></div><div class="line"></div><div class="line">fn1.call.call.call.call(fn2);<span class="comment">//2</span></div></pre></td></tr></table></figure>
-
-          
+          <h3 id="Function-prototype-call"><a href="#Function-prototype-call" class="headerlink" title="Function.prototype.call()"></a>Function.prototype.call()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fun.call(thisArg[, arg1[, arg2[, ...]]])</div></pre></td></tr></table></figure>
+<p>call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/27/call方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -784,10 +1248,14 @@
 
       
         
-          
-            <script src="/assets/js/APlayer.min.js"> </script><p>在JavaScript中继承是依赖于原型prototype链实现的，只有一条原型链，所以理论上是不能继承多个父类的。然而JavaScript是灵活的，通过一些技巧方法可以继承多个对象的属性来实现类似的多继承。<br>当前有个很流行的用来继承单对象属性的extend方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> extend = <span class="function"><span class="keyword">function</span>(<span class="params">target,source</span>)</span>&#123;</div><div class="line">    <span class="comment">//遍历源对象中的属性</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> prototype <span class="keyword">in</span> source)&#123;</div><div class="line">        <span class="comment">//将源对象中的属性复制到目标对象中</span></div><div class="line">        target[prototype] = source[prototype];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//返回目标对象</span></div><div class="line">    <span class="keyword">return</span> target;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//这个extend方法是一个浅复制过程，只能复制值类型属性。</span></div><div class="line"></div><div class="line"><span class="comment">//测试</span></div><div class="line"><span class="keyword">var</span> book = &#123;</div><div class="line">    <span class="attr">name</span>:<span class="string">"JavaScript"</span>,</div><div class="line">    <span class="attr">alike</span>:[<span class="string">"css"</span>,<span class="string">"html"</span>,<span class="string">"js"</span>]</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> anotherBook = &#123;</div><div class="line">    <span class="attr">color</span>:<span class="string">"red"</span></div><div class="line">&#125;;</div><div class="line">extend(anotherBook,book);</div><div class="line"><span class="built_in">console</span>.log(anotherBook.name);<span class="comment">//JavaScript</span></div><div class="line"><span class="built_in">console</span>.log(anotherBook.alike);<span class="comment">//["css","html","js"]</span></div><div class="line"></div><div class="line">anotherBook.alike.push(<span class="string">"ajax"</span>);</div><div class="line">anotherBook.name = <span class="string">"Node"</span>;</div><div class="line"><span class="built_in">console</span>.log(anotherBook.name);<span class="comment">//Node</span></div><div class="line"><span class="built_in">console</span>.log(anotherBook.alike);<span class="comment">//["css","html","js", "ajax"]</span></div><div class="line"><span class="built_in">console</span>.log(book.name);<span class="comment">//JavaScript</span></div><div class="line"><span class="built_in">console</span>.log(book.alike);<span class="comment">//["css","html","js", "ajax"]</span></div><div class="line"></div><div class="line">----------------------------------</div><div class="line"></div><div class="line"><span class="comment">//多继承  属性复制</span></div><div class="line"><span class="keyword">var</span> mix = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> i=<span class="number">1</span>,                        <span class="comment">//从第二个参数起为被继承的对象</span></div><div class="line">        len = <span class="built_in">arguments</span>.length,     <span class="comment">//获取参数长度</span></div><div class="line">        target = <span class="built_in">arguments</span>[<span class="number">0</span>],      <span class="comment">//第一个对象为目标对象</span></div><div class="line">        arg;                        <span class="comment">//缓存参数对象</span></div><div class="line">    <span class="comment">//遍历被继承的对象</span></div><div class="line">    <span class="keyword">for</span>(;i&lt;len;i++)&#123;</div><div class="line">        <span class="comment">//缓存当前对象</span></div><div class="line">        arg = <span class="built_in">arguments</span>[i];</div><div class="line">        <span class="comment">//遍历被继承对象中的属性</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> prototype <span class="keyword">in</span> arg)&#123;</div><div class="line">            <span class="comment">//将被继承对象中的属性复制到目标对象中</span></div><div class="line">            target[prototype] = arg[prototype];</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//返回目标对象</span></div><div class="line">        <span class="keyword">return</span> target;</div><div class="line">    &#125;    </div><div class="line">&#125;</div><div class="line"><span class="comment">//mix方法的作用就是将传入的多个对象的属性复制到源对象中，这样既可实现对多个对象的属性的继承了。</span></div><div class="line"><span class="comment">//也可将它绑定到原生对象Object上，这样所有的对象就可以拥有这个方法了</span></div><div class="line"><span class="built_in">Object</span>.prototype.mix = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> i=<span class="number">0</span>,                        <span class="comment">//从第一个参数起为被继承的对象</span></div><div class="line">    len = <span class="built_in">arguments</span>.length,     <span class="comment">//获取参数长度</span></div><div class="line">    arg;                        <span class="comment">//缓存参数对象</span></div><div class="line">    <span class="comment">//遍历被继承的对象</span></div><div class="line">    <span class="keyword">for</span>(;i&lt;len;i++)&#123;</div><div class="line">        <span class="comment">//缓存当前对象</span></div><div class="line">        arg = <span class="built_in">arguments</span>[i];</div><div class="line">        <span class="comment">//遍历被继承对象中的属性</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> prototype <span class="keyword">in</span> arg)&#123;</div><div class="line">            <span class="comment">//将被继承对象中的属性复制到目标对象中</span></div><div class="line">            target[prototype] = arg[prototype];</div><div class="line">        &#125;</div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
+          <p>在JavaScript中继承是依赖于原型prototype链实现的，只有一条原型链，所以理论上是不能继承多个父类的。然而JavaScript是灵活的，通过一些技巧方法可以继承多个对象的属性来实现类似的多继承。<br>当前有个很流行的用来继承单对象属性的extend方法<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/27/多继承/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -896,476 +1364,14 @@
 
       
         
-          
-            <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'Leo'</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line">fn();<span class="comment">//this--&gt;window</span></div><div class="line"><span class="comment">//obj.fn();//报错</span></div></pre></td></tr></table></figure>
-<h3 id="call方法的作用："><a href="#call方法的作用：" class="headerlink" title="call方法的作用："></a>call方法的作用：</h3><p>首先让原型上的call方法指向，在执行call方法的时候，让fn方法中的this变为第一个参数值obj；然后再把fn这个函数执行；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fn.call(obj);<span class="comment">//this--&gt;obj,先让call执行，执行过程当中，让fn的this变成obj，然后再让fn执行</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="模拟内置的call方法，写一个myCall方法，深入探讨call方法的执行原理"><a href="#模拟内置的call方法，写一个myCall方法，深入探讨call方法的执行原理" class="headerlink" title="模拟内置的call方法，写一个myCall方法，深入探讨call方法的执行原理"></a>模拟内置的call方法，写一个myCall方法，深入探讨call方法的执行原理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.prototype.mycall = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</div><div class="line">    <span class="comment">//myCall方法中的this就是当前要操作和改变其this关键字的那个函数名</span></div><div class="line"></div><div class="line">    <span class="comment">//让fn中的this关键字变成context的值--&gt;obj</span></div><div class="line">    <span class="comment">//让this（谁执行的myCall方法，this就是谁）这个函数中的"this关键字"变为context</span></div><div class="line"></div><div class="line">    <span class="comment">//让fn方法执行</span></div><div class="line">&#125;</div><div class="line">fn.myCall(obj);<span class="comment">//myCall方法中this是fn、</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/24/函数的3种角色/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="墨峰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="墨峰">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/24/函数的3种角色/" itemprop="url">函数的三种角色</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T10:32:40+08:00">
-                2017-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/img/js.jpg" alt="js.jpg"><br>
+          <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'Leo'</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line">fn();<span class="comment">//this--&gt;window</span></div><div class="line"><span class="comment">//obj.fn();//报错</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/07/24/函数的3种角色/#more" rel="contents">
+            <a class="btn" href="/2017/07/24/call深入/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/23/实例化-安全模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="墨峰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="墨峰">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/23/实例化-安全模式/" itemprop="url">实例化--安全模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T15:53:48+08:00">
-                2017-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><h3 id="找位检察长–创建对象的安全模式"><a href="#找位检察长–创建对象的安全模式" class="headerlink" title="找位检察长–创建对象的安全模式"></a>找位检察长–创建对象的安全模式</h3><p>对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。<br>eg：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">title,time,type</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.title = title;</div><div class="line">    <span class="keyword">this</span>.time = time;</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实例化一本书</span></div><div class="line"><span class="keyword">var</span> book = Book(<span class="string">'JavaScript'</span>,<span class="string">'2017'</span>,<span class="string">'js'</span>);</div><div class="line"><span class="built_in">console</span>.log(book);<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.title);<span class="comment">//JavaScript</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.time);<span class="comment">//2017</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.type);<span class="comment">//js</span></div><div class="line"><span class="comment">//首先要明白一点，new关键字的作用可以看做是对当前对象的this不停地赋值，然而例子中没有用new，所以就会直接执行这个函数，而这个函数在全局作用域中执行了，所以在全局作用域中this指向的当前对象自然就是window了，所以添加的属性自然就会被添加到window上面了，而这个book变量最终的作用是要得到Book这个类（函数）的执行结果，由于函数中没有return语句，这个Book类自然不会告诉book变量的执行结果，所以是undefined</span></div></pre></td></tr></table></figure></p>
-<h3 id="安全模式"><a href="#安全模式" class="headerlink" title="安全模式"></a>安全模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">title,time,type</span>)</span>&#123;</div><div class="line">    <span class="comment">//判断执行过程中this是否是当前这个对象（如果是说明是new创建的）</span></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> Book)&#123;</div><div class="line">        <span class="keyword">this</span>.title = title;</div><div class="line">        <span class="keyword">this</span>.time = time;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">        <span class="comment">//否则重新创建这个对象</span></div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Book(title,time,type);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> book = Book(<span class="string">'JavaScript'</span>,<span class="string">'2017'</span>,<span class="string">'js'</span>);</div><div class="line"><span class="built_in">console</span>.log(book);<span class="comment">//Book</span></div><div class="line"><span class="built_in">console</span>.log(book.title);<span class="comment">//JavaScript</span></div><div class="line"><span class="built_in">console</span>.log(book.time);<span class="comment">//2017</span></div><div class="line"><span class="built_in">console</span>.log(book.type);<span class="comment">//js</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.title);<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.time);<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.type);<span class="comment">//undefined</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/23/继承深入/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="墨峰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="墨峰">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/23/继承深入/" itemprop="url">继承深入</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T10:00:56+08:00">
-                2017-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>类式继承（原型继承）<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/23/继承深入/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/原型链参考/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="墨峰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="墨峰">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/21/原型链参考/" itemprop="url">原型链参考</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T15:15:40+08:00">
-                2017-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><p>面向对象需掌握几个概念：<br>对象：万物皆对象<br>类：对象的具体细分<br>实例：类中的具体事物</p>
-<hr>
-<p>1、所有的函数数据类型（普通函数、类）都天生自带一个属性：prototype，它存储的值是一个对象数据类型的值，浏览器默认为其开辟一个堆内存<br>2、在浏览器给prototype默认开辟的这个堆内存上有一个默认的属性constructor，指向当前类本身<br>3、每一个对象数据类型都天生自带一个属性：<code>__protot__</code>，指向当前实例所属类的原型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">    <span class="keyword">this</span>.y = <span class="number">200</span>;</div><div class="line">    <span class="comment">//在类的函数体中写的this.xxx = xxx 都是给当前类的实例,增加的私有的属性或者方法</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//在类的原型上中写的，都是给当前类的实例或者当前类,增加的公有的属性或者方法</span></div><div class="line">Fn.prototype.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.x); </div><div class="line">&#125;;</div><div class="line">Fn.prototype.getY = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.y); </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div><div class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> Fn;</div></pre></td></tr></table></figure>
-<p><img src="/img/原型链-1.jpg" alt="原型链-1"><br>原型链：当f1.xxx的时候，先找私有的，私有的没有，通过<code>__proto__</code>找到Fn所属类的原型，查找公有的，公有的没有，再通过原型上的<code>__proto__</code>找到基类里面，如果里面再没有，得到的值就是undefined。</p>
-<hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">    <span class="keyword">this</span>.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Fn.prototype.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.x); </div><div class="line">&#125;;</div><div class="line">Fn.prototype.setX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="keyword">this</span>.x = n; </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div><div class="line">f1.getX();</div><div class="line"><span class="comment">//确定this的方式：</span></div><div class="line"><span class="comment">//1、看方法是在的时候，"."前面是谁，this就是谁</span></div><div class="line"><span class="comment">//2、把函数体中的this替换成分析的结果</span></div><div class="line"><span class="comment">//3、按照原型链的查找模式找到对应的值即可</span></div><div class="line">f1.getX();<span class="comment">//100,getX中的this是f1，console.log(f1.x)</span></div><div class="line">f1.__proto__.getX();<span class="comment">//this--&gt;f1.__proto__,console.log(f1.__proto__.x); --&gt;undefined</span></div><div class="line">Fn.prototype.setX(<span class="number">300</span>);<span class="comment">//this--&gt;Fn.prototype,Fn.prototype.x = 300</span></div><div class="line">f1.getX();<span class="comment">//100</span></div><div class="line">f1.__proto__.getX();<span class="comment">//300</span></div><div class="line"></div><div class="line">f1.setX(<span class="number">500</span>);<span class="comment">//this--&gt;f1,f1.x = 500;把私有的修改为500</span></div><div class="line">f1.getX();<span class="comment">//500</span></div><div class="line"></div><div class="line">f1.y = <span class="number">300</span>;<span class="comment">//给f1本身增加一个私有的属性，和f2没关系</span></div><div class="line">f1.__protot__.y = <span class="number">1000</span>;<span class="comment">//给原型上增加一个y = 1000，f2也可以获取到这个y的值了</span></div></pre></td></tr></table></figure>
-
-          
         
       
     </div>
@@ -1402,7 +1408,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1448,7 +1454,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1461,7 +1467,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

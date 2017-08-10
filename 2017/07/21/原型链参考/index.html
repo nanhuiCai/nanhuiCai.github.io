@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="面向对象需掌握几个概念：对象：万物皆对象类：对象的具体细分实例：类中的具体事物  1、所有的函数数据类型（普通函数、类）都天生自带一个属性：prototype，它存储的值是一个对象数据类型的值，浏览器默认为其开辟一个堆内存2、在浏览器给prototype默认开辟的这个堆内存上有一个默认的属性constructor，指向当前类本身3、每一个对象数据类型都天生自带一个属性：__protot__，指向">
+<meta name="description" content="面向对象需掌握几个概念：对象：万物皆对象类：对象的具体细分实例：类中的具体事物">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原型链参考">
 <meta property="og:url" content="http://yoursite.com/2017/07/21/原型链参考/index.html">
 <meta property="og:site_name" content="墨峰">
-<meta property="og:description" content="面向对象需掌握几个概念：对象：万物皆对象类：对象的具体细分实例：类中的具体事物  1、所有的函数数据类型（普通函数、类）都天生自带一个属性：prototype，它存储的值是一个对象数据类型的值，浏览器默认为其开辟一个堆内存2、在浏览器给prototype默认开辟的这个堆内存上有一个默认的属性constructor，指向当前类本身3、每一个对象数据类型都天生自带一个属性：__protot__，指向">
+<meta property="og:description" content="面向对象需掌握几个概念：对象：万物皆对象类：对象的具体细分实例：类中的具体事物">
 <meta property="og:image" content="http://yoursite.com/img/原型链-1.jpg">
-<meta property="og:updated_time" content="2017-07-21T09:09:44.421Z">
+<meta property="og:updated_time" content="2017-08-07T08:53:46.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型链参考">
-<meta name="twitter:description" content="面向对象需掌握几个概念：对象：万物皆对象类：对象的具体细分实例：类中的具体事物  1、所有的函数数据类型（普通函数、类）都天生自带一个属性：prototype，它存储的值是一个对象数据类型的值，浏览器默认为其开辟一个堆内存2、在浏览器给prototype默认开辟的这个堆内存上有一个默认的属性constructor，指向当前类本身3、每一个对象数据类型都天生自带一个属性：__protot__，指向">
+<meta name="twitter:description" content="面向对象需掌握几个概念：对象：万物皆对象类：对象的具体细分实例：类中的具体事物">
 <meta name="twitter:image" content="http://yoursite.com/img/原型链-1.jpg">
 
 
@@ -321,13 +321,14 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>面向对象需掌握几个概念：<br>对象：万物皆对象<br>类：对象的具体细分<br>实例：类中的具体事物</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>面向对象需掌握几个概念：<br>对象：万物皆对象<br>类：对象的具体细分<br>实例：类中的具体事物<br><a id="more"></a></p>
 <hr>
 <p>1、所有的函数数据类型（普通函数、类）都天生自带一个属性：prototype，它存储的值是一个对象数据类型的值，浏览器默认为其开辟一个堆内存<br>2、在浏览器给prototype默认开辟的这个堆内存上有一个默认的属性constructor，指向当前类本身<br>3、每一个对象数据类型都天生自带一个属性：<code>__protot__</code>，指向当前实例所属类的原型</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">    <span class="keyword">this</span>.y = <span class="number">200</span>;</div><div class="line">    <span class="comment">//在类的函数体中写的this.xxx = xxx 都是给当前类的实例,增加的私有的属性或者方法</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//在类的原型上中写的，都是给当前类的实例或者当前类,增加的公有的属性或者方法</span></div><div class="line">Fn.prototype.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.x); </div><div class="line">&#125;;</div><div class="line">Fn.prototype.getY = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.y); </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div><div class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> Fn;</div></pre></td></tr></table></figure>
 <p><img src="/img/原型链-1.jpg" alt="原型链-1"><br>原型链：当f1.xxx的时候，先找私有的，私有的没有，通过<code>__proto__</code>找到Fn所属类的原型，查找公有的，公有的没有，再通过原型上的<code>__proto__</code>找到基类里面，如果里面再没有，得到的值就是undefined。</p>
 <hr>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">100</span>;</div><div class="line">    <span class="keyword">this</span>.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Fn.prototype.getX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.x); </div><div class="line">&#125;;</div><div class="line">Fn.prototype.setX = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">   <span class="keyword">this</span>.x = n; </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</div><div class="line">f1.getX();</div><div class="line"><span class="comment">//确定this的方式：</span></div><div class="line"><span class="comment">//1、看方法是在的时候，"."前面是谁，this就是谁</span></div><div class="line"><span class="comment">//2、把函数体中的this替换成分析的结果</span></div><div class="line"><span class="comment">//3、按照原型链的查找模式找到对应的值即可</span></div><div class="line">f1.getX();<span class="comment">//100,getX中的this是f1，console.log(f1.x)</span></div><div class="line">f1.__proto__.getX();<span class="comment">//this--&gt;f1.__proto__,console.log(f1.__proto__.x); --&gt;undefined</span></div><div class="line">Fn.prototype.setX(<span class="number">300</span>);<span class="comment">//this--&gt;Fn.prototype,Fn.prototype.x = 300</span></div><div class="line">f1.getX();<span class="comment">//100</span></div><div class="line">f1.__proto__.getX();<span class="comment">//300</span></div><div class="line"></div><div class="line">f1.setX(<span class="number">500</span>);<span class="comment">//this--&gt;f1,f1.x = 500;把私有的修改为500</span></div><div class="line">f1.getX();<span class="comment">//500</span></div><div class="line"></div><div class="line">f1.y = <span class="number">300</span>;<span class="comment">//给f1本身增加一个私有的属性，和f2没关系</span></div><div class="line">f1.__protot__.y = <span class="number">1000</span>;<span class="comment">//给原型上增加一个y = 1000，f2也可以获取到这个y的值了</span></div></pre></td></tr></table></figure>
+<!-- more -->
 
       
     </div>
@@ -440,7 +441,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -453,7 +454,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="找位检察长–创建对象的安全模式对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。eg：123456789101112var Book = function(title,time,type)&amp;#123;    this.title = title;    this.time = time;    this.type = type;&amp;#125;//实例化一本书var">
+<meta name="description" content="找位检察长–创建对象的安全模式对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。">
 <meta name="keywords" content="实例">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实例化--安全模式">
 <meta property="og:url" content="http://yoursite.com/2017/07/23/实例化-安全模式/index.html">
 <meta property="og:site_name" content="墨峰">
-<meta property="og:description" content="找位检察长–创建对象的安全模式对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。eg：123456789101112var Book = function(title,time,type)&amp;#123;    this.title = title;    this.time = time;    this.type = type;&amp;#125;//实例化一本书var">
-<meta property="og:updated_time" content="2017-07-24T09:36:15.095Z">
+<meta property="og:description" content="找位检察长–创建对象的安全模式对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。">
+<meta property="og:updated_time" content="2017-08-07T08:53:23.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实例化--安全模式">
-<meta name="twitter:description" content="找位检察长–创建对象的安全模式对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。eg：123456789101112var Book = function(title,time,type)&amp;#123;    this.title = title;    this.time = time;    this.type = type;&amp;#125;//实例化一本书var">
+<meta name="twitter:description" content="找位检察长–创建对象的安全模式对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。">
 
 
 
@@ -320,8 +320,10 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h3 id="找位检察长–创建对象的安全模式"><a href="#找位检察长–创建对象的安全模式" class="headerlink" title="找位检察长–创建对象的安全模式"></a>找位检察长–创建对象的安全模式</h3><p>对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。<br>eg：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">title,time,type</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.title = title;</div><div class="line">    <span class="keyword">this</span>.time = time;</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实例化一本书</span></div><div class="line"><span class="keyword">var</span> book = Book(<span class="string">'JavaScript'</span>,<span class="string">'2017'</span>,<span class="string">'js'</span>);</div><div class="line"><span class="built_in">console</span>.log(book);<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.title);<span class="comment">//JavaScript</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.time);<span class="comment">//2017</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.type);<span class="comment">//js</span></div><div class="line"><span class="comment">//首先要明白一点，new关键字的作用可以看做是对当前对象的this不停地赋值，然而例子中没有用new，所以就会直接执行这个函数，而这个函数在全局作用域中执行了，所以在全局作用域中this指向的当前对象自然就是window了，所以添加的属性自然就会被添加到window上面了，而这个book变量最终的作用是要得到Book这个类（函数）的执行结果，由于函数中没有return语句，这个Book类自然不会告诉book变量的执行结果，所以是undefined</span></div></pre></td></tr></table></figure></p>
+        <script src="/assets/js/APlayer.min.js"> </script><h3 id="找位检察长–创建对象的安全模式"><a href="#找位检察长–创建对象的安全模式" class="headerlink" title="找位检察长–创建对象的安全模式"></a>找位检察长–创建对象的安全模式</h3><p>对于初学者来说，在创建对象上由于不适应这种写法，所以经常容易忘记使用new而犯错误。<br><a id="more"></a></p>
+<p>eg：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">title,time,type</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.title = title;</div><div class="line">    <span class="keyword">this</span>.time = time;</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实例化一本书</span></div><div class="line"><span class="keyword">var</span> book = Book(<span class="string">'JavaScript'</span>,<span class="string">'2017'</span>,<span class="string">'js'</span>);</div><div class="line"><span class="built_in">console</span>.log(book);<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.title);<span class="comment">//JavaScript</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.time);<span class="comment">//2017</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.type);<span class="comment">//js</span></div><div class="line"><span class="comment">//首先要明白一点，new关键字的作用可以看做是对当前对象的this不停地赋值，然而例子中没有用new，所以就会直接执行这个函数，而这个函数在全局作用域中执行了，所以在全局作用域中this指向的当前对象自然就是window了，所以添加的属性自然就会被添加到window上面了，而这个book变量最终的作用是要得到Book这个类（函数）的执行结果，由于函数中没有return语句，这个Book类自然不会告诉book变量的执行结果，所以是undefined</span></div></pre></td></tr></table></figure></p>
 <h3 id="安全模式"><a href="#安全模式" class="headerlink" title="安全模式"></a>安全模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Book = <span class="function"><span class="keyword">function</span>(<span class="params">title,time,type</span>)</span>&#123;</div><div class="line">    <span class="comment">//判断执行过程中this是否是当前这个对象（如果是说明是new创建的）</span></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> Book)&#123;</div><div class="line">        <span class="keyword">this</span>.title = title;</div><div class="line">        <span class="keyword">this</span>.time = time;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">        <span class="comment">//否则重新创建这个对象</span></div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Book(title,time,type);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> book = Book(<span class="string">'JavaScript'</span>,<span class="string">'2017'</span>,<span class="string">'js'</span>);</div><div class="line"><span class="built_in">console</span>.log(book);<span class="comment">//Book</span></div><div class="line"><span class="built_in">console</span>.log(book.title);<span class="comment">//JavaScript</span></div><div class="line"><span class="built_in">console</span>.log(book.time);<span class="comment">//2017</span></div><div class="line"><span class="built_in">console</span>.log(book.type);<span class="comment">//js</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.title);<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.time);<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.type);<span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+<!-- more -->
 
       
     </div>
@@ -449,7 +451,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -462,7 +464,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

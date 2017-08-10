@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="123456var obj = &amp;#123;name:&apos;Leo&apos;&amp;#125;;function fn()&amp;#123;    console.log(this);&amp;#125;;fn();//this--&amp;gt;window//obj.fn();//报错 call方法的作用：首先让原型上的call方法指向，在执行call方法的时候，让fn方法中的this变为第一个参数值obj；然后再把fn这个函数执">
+<meta name="description" content="123456var obj = &amp;#123;name:&apos;Leo&apos;&amp;#125;;function fn()&amp;#123;    console.log(this);&amp;#125;;fn();//this--&amp;gt;window//obj.fn();//报错">
 <meta name="keywords" content="call,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="call深入">
 <meta property="og:url" content="http://yoursite.com/2017/07/24/call深入/index.html">
 <meta property="og:site_name" content="墨峰">
-<meta property="og:description" content="123456var obj = &amp;#123;name:&apos;Leo&apos;&amp;#125;;function fn()&amp;#123;    console.log(this);&amp;#125;;fn();//this--&amp;gt;window//obj.fn();//报错 call方法的作用：首先让原型上的call方法指向，在执行call方法的时候，让fn方法中的this变为第一个参数值obj；然后再把fn这个函数执">
-<meta property="og:updated_time" content="2017-07-24T07:33:45.079Z">
+<meta property="og:description" content="123456var obj = &amp;#123;name:&apos;Leo&apos;&amp;#125;;function fn()&amp;#123;    console.log(this);&amp;#125;;fn();//this--&amp;gt;window//obj.fn();//报错">
+<meta property="og:updated_time" content="2017-08-07T08:54:41.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="call深入">
-<meta name="twitter:description" content="123456var obj = &amp;#123;name:&apos;Leo&apos;&amp;#125;;function fn()&amp;#123;    console.log(this);&amp;#125;;fn();//this--&amp;gt;window//obj.fn();//报错 call方法的作用：首先让原型上的call方法指向，在执行call方法的时候，让fn方法中的this变为第一个参数值obj；然后再把fn这个函数执">
+<meta name="twitter:description" content="123456var obj = &amp;#123;name:&apos;Leo&apos;&amp;#125;;function fn()&amp;#123;    console.log(this);&amp;#125;;fn();//this--&amp;gt;window//obj.fn();//报错">
 
 
 
@@ -321,9 +321,11 @@
 
       
         <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'Leo'</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line">fn();<span class="comment">//this--&gt;window</span></div><div class="line"><span class="comment">//obj.fn();//报错</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="call方法的作用："><a href="#call方法的作用：" class="headerlink" title="call方法的作用："></a>call方法的作用：</h3><p>首先让原型上的call方法指向，在执行call方法的时候，让fn方法中的this变为第一个参数值obj；然后再把fn这个函数执行；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fn.call(obj);<span class="comment">//this--&gt;obj,先让call执行，执行过程当中，让fn的this变成obj，然后再让fn执行</span></div></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="模拟内置的call方法，写一个myCall方法，深入探讨call方法的执行原理"><a href="#模拟内置的call方法，写一个myCall方法，深入探讨call方法的执行原理" class="headerlink" title="模拟内置的call方法，写一个myCall方法，深入探讨call方法的执行原理"></a>模拟内置的call方法，写一个myCall方法，深入探讨call方法的执行原理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.prototype.mycall = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</div><div class="line">    <span class="comment">//myCall方法中的this就是当前要操作和改变其this关键字的那个函数名</span></div><div class="line"></div><div class="line">    <span class="comment">//让fn中的this关键字变成context的值--&gt;obj</span></div><div class="line">    <span class="comment">//让this（谁执行的myCall方法，this就是谁）这个函数中的"this关键字"变为context</span></div><div class="line"></div><div class="line">    <span class="comment">//让fn方法执行</span></div><div class="line">&#125;</div><div class="line">fn.myCall(obj);<span class="comment">//myCall方法中this是fn、</span></div></pre></td></tr></table></figure>
+<!-- more -->
 
       
     </div>
@@ -453,7 +455,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -466,7 +468,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

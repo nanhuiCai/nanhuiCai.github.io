@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="123456789var ary = [23，1,34,24,35,14,36，2];Math.max.call(ary)//第一种方法，首先先给数组进行排序（小-大），第一个和最后一个就是我们想要的最小值和最大值ary.sort(function(a,b)&amp;#123;    return a - b;&amp;#125;);var min = ary[0];var max = ary[ary.leng">
+<meta name="description" content="此处省略若干字~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="获取数组最大值">
 <meta property="og:url" content="http://yoursite.com/2017/07/28/获取数组最大值/index.html">
 <meta property="og:site_name" content="墨峰">
-<meta property="og:description" content="123456789var ary = [23，1,34,24,35,14,36，2];Math.max.call(ary)//第一种方法，首先先给数组进行排序（小-大），第一个和最后一个就是我们想要的最小值和最大值ary.sort(function(a,b)&amp;#123;    return a - b;&amp;#125;);var min = ary[0];var max = ary[ary.leng">
-<meta property="og:updated_time" content="2017-07-28T07:06:50.562Z">
+<meta property="og:description" content="此处省略若干字~">
+<meta property="og:updated_time" content="2017-08-07T08:51:20.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="获取数组最大值">
-<meta name="twitter:description" content="123456789var ary = [23，1,34,24,35,14,36，2];Math.max.call(ary)//第一种方法，首先先给数组进行排序（小-大），第一个和最后一个就是我们想要的最小值和最大值ary.sort(function(a,b)&amp;#123;    return a - b;&amp;#125;);var min = ary[0];var max = ary[ary.leng">
+<meta name="twitter:description" content="此处省略若干字~">
 
 
 
@@ -319,7 +319,9 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ary = [<span class="number">23</span>，<span class="number">1</span>,<span class="number">34</span>,<span class="number">24</span>,<span class="number">35</span>,<span class="number">14</span>,<span class="number">36</span>，<span class="number">2</span>];</div><div class="line"><span class="built_in">Math</span>.max.call(ary)</div><div class="line"><span class="comment">//第一种方法，首先先给数组进行排序（小-大），第一个和最后一个就是我们想要的最小值和最大值</span></div><div class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a - b;</div><div class="line">&#125;);</div><div class="line"><span class="keyword">var</span> min = ary[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> max = ary[ary.length<span class="number">-1</span>];</div><div class="line"><span class="built_in">console</span>.log(min,max);</div></pre></td></tr></table></figure>
+        <script src="/assets/js/APlayer.min.js"> </script><p>此处省略若干字~</p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ary = [<span class="number">23</span>，<span class="number">1</span>,<span class="number">34</span>,<span class="number">24</span>,<span class="number">35</span>,<span class="number">14</span>,<span class="number">36</span>，<span class="number">2</span>];</div><div class="line"><span class="built_in">Math</span>.max.call(ary)</div><div class="line"><span class="comment">//第一种方法，首先先给数组进行排序（小-大），第一个和最后一个就是我们想要的最小值和最大值</span></div><div class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a - b;</div><div class="line">&#125;);</div><div class="line"><span class="keyword">var</span> min = ary[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> max = ary[ary.length<span class="number">-1</span>];</div><div class="line"><span class="built_in">console</span>.log(min,max);</div></pre></td></tr></table></figure>
 <hr>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第二种思路，假设法：假设昂前数组中的弟弟一个值是最大值，然后拿这个值和后面的项逐一进行比较，如果后面某一个只比假设的还要打，说明假设错了，我们把假设的值进行替换...</span></div><div class="line"><span class="comment">//和自定义属性一样，都是JS中最常用的编程思想</span></div><div class="line"><span class="keyword">var</span> ary = [<span class="number">23</span>，<span class="number">1</span>,<span class="number">34</span>,<span class="number">24</span>,<span class="number">35</span>,<span class="number">14</span>,<span class="number">36</span>，<span class="number">2</span>];</div><div class="line"><span class="keyword">var</span> max = ary[<span class="number">0</span>],min = ary[<span class="number">0</span>];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;ary.length;i++)&#123;</div><div class="line">    <span class="keyword">var</span> cur = ary[i];</div><div class="line">    cur &gt; max ? max = cur : <span class="literal">null</span>;</div><div class="line">    cur &lt; min ? min = cur : <span class="literal">null</span>;     </div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(min,max);</div><div class="line"><span class="comment">//以后项目当中，经常用到的编程思想</span></div><div class="line"><span class="comment">//细心体会透</span></div><div class="line"><span class="comment">//先假设一个命题，再验证命题成立</span></div></pre></td></tr></table></figure>
 <hr>
@@ -327,6 +329,7 @@
 <h3 id="eval：把一个字符串变为JS表达式执行-比较重要的知识点"><a href="#eval：把一个字符串变为JS表达式执行-比较重要的知识点" class="headerlink" title="eval：把一个字符串变为JS表达式执行(比较重要的知识点)"></a>eval：把一个字符串变为JS表达式执行(比较重要的知识点)</h3><p>例如：<br>eval(“12+23+34+45”)  –&gt; 114</p>
 <hr>
 <h3 id="括号表达式"><a href="#括号表达式" class="headerlink" title="括号表达式"></a>括号表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>);&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>);&#125;</div><div class="line"><span class="comment">//;(fn1,fn2)();//2,  --&gt;只有fn2执行了   ---&gt;(x1,x2,x3...) 括号表达式，一个括号中出现多项内容，中间用","隔开，但是我们最好获取到的结果只有最后一项</span></div><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">'leo'</span>,<span class="attr">fn</span>:fn2&#125;;</div><div class="line"><span class="comment">//(fn2,obj.fn)();//执行的是obj.fn ，但是执行的时候里面的this变为了window而不是obj</span></div><div class="line">(obj.fn)();<span class="comment">//this 还是 obj</span></div></pre></td></tr></table></figure>
+<!-- more -->
 
       
     </div>
@@ -373,8 +376,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/03/小程序-1/" rel="prev" title="小程序-1">
-                小程序-1 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/28/获取平均数/" rel="prev" title="获取平均数">
+                获取平均数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -448,7 +451,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -461,7 +464,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
